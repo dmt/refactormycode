@@ -3,18 +3,16 @@ public class StringCalculator {
         if (input.isEmpty()) {
             return 0;
         }
+        int result = 0;
         if (input.startsWith("//")) {
-            int returnValue = 0;
             for (String nextNumber : input.substring(4).split("[\n"+ input.charAt(2) +"]")) {
-                returnValue += Integer.parseInt(nextNumber);
+                result += Integer.parseInt(nextNumber);
             }
-            return returnValue;
         } else {
-            int result = 0;
             for (String nextNumber : input.split("[\n,]")) {
                 result += Integer.parseInt(nextNumber);
             }
-            return result;
         }
+        return result;
     }
 }
