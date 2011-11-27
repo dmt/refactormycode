@@ -8,7 +8,8 @@ public class StringCalculator {
         }
         int result = 0;
         if (declaresSpecialDelimiter(input)) {
-            for (String nextNumber : input.substring(4).split("[\n"+ parseDelimiter(input) +"]")) {
+            char delimiter = parseDelimiter(input);
+            for (String nextNumber : input.substring(4).split("[\n"+ delimiter +"]")) {
                 result += Integer.parseInt(nextNumber);
             }
         } else {
