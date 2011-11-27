@@ -34,6 +34,6 @@ public class StringCalculatorTest {
 
     @Test
     public void supportsCustomSeparators() throws Exception {
-        assertEquals(7, stringCalculator.add("//;\n5;2"));
+        assertEquals(7, stringCalculator.add(StringCalculator.DELIMITER_DECLARATION + ";\n5;2"));
     }
 }

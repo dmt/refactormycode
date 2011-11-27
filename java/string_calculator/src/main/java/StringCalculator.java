@@ -1,6 +1,6 @@
 public class StringCalculator {
 
-    private static final String DELIMITER_DECLARATION = "//";
+    static final String DELIMITER_DECLARATION = "//";
 
     public int add(String input) {
         if (input.isEmpty()) {
