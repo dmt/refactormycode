@@ -4,7 +4,7 @@ public class StringCalculator {
             return 0;
         }
         int result = 0;
-        if (input.startsWith("//")) {
+        if (declaresSpecialDelimiter(input)) {
             for (String nextNumber : input.substring(4).split("[\n"+ input.charAt(2) +"]")) {
                 result += Integer.parseInt(nextNumber);
             }
@@ -14,5 +14,9 @@ public class StringCalculator {
             }
         }
         return result;
+    }
+
+    private boolean declaresSpecialDelimiter(final String input) {
+        return input.startsWith("//");
     }
 }
