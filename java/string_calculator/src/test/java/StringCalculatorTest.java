@@ -5,35 +5,35 @@ import static junit.framework.Assert.assertEquals;
 
 public class StringCalculatorTest {
 
-    private StringCalculator s;
+    private StringCalculator stringCalculator;
 
     @Before
     public void setUp() throws Exception {
-        s = new StringCalculator();
+        stringCalculator = new StringCalculator();
     }
 
     @Test
     public void treatsEmptyStringsAsZero() {
-        assertEquals(0, s.add(""));
+        assertEquals(0, stringCalculator.add(""));
     }
 
     @Test
     public void addsSingleNumbers() {
-        assertEquals(17, s.add("17"));
+        assertEquals(17, stringCalculator.add("17"));
     }
 
     @Test
     public void addsCommaSeparatedNumbers() {
-        assertEquals(2356, s.add("2341,15"));
+        assertEquals(2356, stringCalculator.add("2341,15"));
     }
 
     @Test
     public void treatsNewLineAsSeparator() {
-        assertEquals(35, s.add("34\n1"));
+        assertEquals(35, stringCalculator.add("34\n1"));
     }
 
     @Test
     public void supportsCustomSeparators() throws Exception {
-        assertEquals(7, s.add("//;\n5;2"));
+        assertEquals(7, stringCalculator.add("//;\n5;2"));
     }
 }

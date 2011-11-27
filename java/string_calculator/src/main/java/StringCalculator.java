@@ -1,20 +1,20 @@
 public class StringCalculator {
-    public int add(String s) {
-        if (s.isEmpty()) {
+    public int add(String input) {
+        if (input.isEmpty()) {
             return 0;
         }
-        if (s.startsWith("//")) {
+        if (input.startsWith("//")) {
             int returnValue = 0;
-            for (String n : s.substring(4).split("[\n"+ s.charAt(2) +"]")) {
-                returnValue += Integer.parseInt(n);
+            for (String nextNumber : input.substring(4).split("[\n"+ input.charAt(2) +"]")) {
+                returnValue += Integer.parseInt(nextNumber);
             }
             return returnValue;
         } else {
-            int r = 0; // result
-            for (String n : s.split("[\n,]")) {
-                r += Integer.parseInt(n);
+            int result = 0;
+            for (String nextNumber : input.split("[\n,]")) {
+                result += Integer.parseInt(nextNumber);
             }
-            return r;
+            return result;
         }
     }
 }
