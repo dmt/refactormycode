@@ -1,4 +1,7 @@
 public class StringCalculator {
+
+    private static final String DELIMITER_DECLARATION = "//";
+
     public int add(String input) {
         if (input.isEmpty()) {
             return 0;
@@ -17,6 +20,6 @@ public class StringCalculator {
     }
 
     private boolean declaresSpecialDelimiter(final String input) {
-        return input.startsWith("//");
+        return input.startsWith(DELIMITER_DECLARATION);
     }
 }
