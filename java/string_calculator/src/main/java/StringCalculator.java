@@ -13,14 +13,18 @@ public class StringCalculator {
         if (declaresSpecialDelimiter(input)) {
             delimiter = parseDelimiter(input);
             inputTokens = splitInputTokens(input.substring(4), delimiter);
-            for (String nextNumber : inputTokens) {
-                result += Integer.parseInt(nextNumber);
-            }
+            result = sumUpTokens(inputTokens);
         } else {
             inputTokens = splitInputTokens(input, delimiter);
-            for (String nextNumber : inputTokens) {
-                result += Integer.parseInt(nextNumber);
-            }
+            result = sumUpTokens(inputTokens);
+        }
+        return result;
+    }
+
+    private int sumUpTokens(final String[] inputTokens) {
+        int result = 0;
+        for (String nextNumber : inputTokens) {
+            result += Integer.parseInt(nextNumber);
         }
         return result;
     }
