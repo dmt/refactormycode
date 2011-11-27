@@ -7,18 +7,15 @@ public class StringCalculator {
         if (input.isEmpty()) {
             return 0;
         }
-        int result = 0;
         char delimiter = DEFAULT_DELIMITER;
         String[] inputTokens;
         if (declaresSpecialDelimiter(input)) {
             delimiter = parseDelimiter(input);
             inputTokens = splitInputTokens(input.substring(4), delimiter);
-            result = sumUpTokens(inputTokens);
         } else {
             inputTokens = splitInputTokens(input, delimiter);
-            result = sumUpTokens(inputTokens);
         }
-        return result;
+        return sumUpTokens(inputTokens);
     }
 
     private int sumUpTokens(final String[] inputTokens) {
