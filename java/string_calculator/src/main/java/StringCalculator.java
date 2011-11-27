@@ -9,13 +9,16 @@ public class StringCalculator {
         }
         int result = 0;
         char delimiter = DEFAULT_DELIMITER;
+        String[] inputTokens;
         if (declaresSpecialDelimiter(input)) {
             delimiter = parseDelimiter(input);
-            for (String nextNumber : splitInputTokens(input.substring(4), delimiter)) {
+            inputTokens = splitInputTokens(input.substring(4), delimiter);
+            for (String nextNumber : inputTokens) {
                 result += Integer.parseInt(nextNumber);
             }
         } else {
-            for (String nextNumber : splitInputTokens(input, delimiter)) {
+            inputTokens = splitInputTokens(input, delimiter);
+            for (String nextNumber : inputTokens) {
                 result += Integer.parseInt(nextNumber);
             }
         }
