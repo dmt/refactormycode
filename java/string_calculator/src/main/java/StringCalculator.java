@@ -1,19 +1,21 @@
 public class StringCalculator {
 
     static final String DELIMITER_DECLARATION = "//";
+    static final char DEFAULT_DELIMITER = ',';
 
     public int add(String input) {
         if (input.isEmpty()) {
             return 0;
         }
         int result = 0;
+        char delimiter = DEFAULT_DELIMITER;
         if (declaresSpecialDelimiter(input)) {
-            char delimiter = parseDelimiter(input);
+            delimiter = parseDelimiter(input);
             for (String nextNumber : input.substring(4).split("[\n"+ delimiter +"]")) {
                 result += Integer.parseInt(nextNumber);
             }
         } else {
-            for (String nextNumber : input.split("[\n,]")) {
+            for (String nextNumber : input.split("[\n"+delimiter+"]")) {
                 result += Integer.parseInt(nextNumber);
             }
         }
