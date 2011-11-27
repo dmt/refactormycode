@@ -8,7 +8,7 @@ public class StringCalculator {
         }
         int result = 0;
         if (declaresSpecialDelimiter(input)) {
-            for (String nextNumber : input.substring(4).split("[\n"+ input.charAt(2) +"]")) {
+            for (String nextNumber : input.substring(4).split("[\n"+ parseDelimiter(input) +"]")) {
                 result += Integer.parseInt(nextNumber);
             }
         } else {
@@ -17,6 +17,10 @@ public class StringCalculator {
             }
         }
         return result;
+    }
+
+    private char parseDelimiter(final String input) {
+        return input.charAt(2);
     }
 
     private boolean declaresSpecialDelimiter(final String input) {
