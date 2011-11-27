@@ -11,15 +11,19 @@ public class StringCalculator {
         char delimiter = DEFAULT_DELIMITER;
         if (declaresSpecialDelimiter(input)) {
             delimiter = parseDelimiter(input);
-            for (String nextNumber : input.substring(4).split("[\n"+ delimiter +"]")) {
+            for (String nextNumber : splitInputTokens(input.substring(4), delimiter)) {
                 result += Integer.parseInt(nextNumber);
             }
         } else {
-            for (String nextNumber : input.split("[\n"+delimiter+"]")) {
+            for (String nextNumber : splitInputTokens(input, delimiter)) {
                 result += Integer.parseInt(nextNumber);
             }
         }
         return result;
+    }
+
+    private String[] splitInputTokens(final String input, final char delimiter) {
+        return input.split("[\n"+delimiter+"]");
     }
 
     private char parseDelimiter(final String input) {
