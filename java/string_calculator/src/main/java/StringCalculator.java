@@ -11,7 +11,7 @@ public class StringCalculator {
         String inputData = input;
         if (declaresSpecialDelimiter(input)) {
             delimiter = parseDelimiter(input);
-            inputData = input.substring(4);
+            inputData = input.substring((DELIMITER_DECLARATION+DEFAULT_DELIMITER+'\n').length());
         }
         String[] inputTokens = splitInputTokens(inputData, delimiter);
         return sumUpTokens(inputTokens);
