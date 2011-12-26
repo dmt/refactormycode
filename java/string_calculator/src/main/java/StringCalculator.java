@@ -8,13 +8,12 @@ public class StringCalculator {
             return 0;
         }
         char delimiter = DEFAULT_DELIMITER;
-        String[] inputTokens;
+        String inputData = input;
         if (declaresSpecialDelimiter(input)) {
             delimiter = parseDelimiter(input);
-            inputTokens = splitInputTokens(input.substring(4), delimiter);
-        } else {
-            inputTokens = splitInputTokens(input, delimiter);
+            inputData = input.substring(4);
         }
+        String[] inputTokens = splitInputTokens(inputData, delimiter);
         return sumUpTokens(inputTokens);
     }
 
