@@ -11,10 +11,14 @@ public class StringCalculator {
         String inputData = input;
         if (declaresSpecialDelimiter(input)) {
             delimiter = parseDelimiter(input);
-            inputData = input.substring((DELIMITER_DECLARATION+DEFAULT_DELIMITER+'\n').length());
+            inputData = removeDelimiterDeclaration(input);
         }
         String[] inputTokens = splitInputTokens(inputData, delimiter);
         return sumUpTokens(inputTokens);
+    }
+
+    private String removeDelimiterDeclaration(final String input) {
+        return input.substring((DELIMITER_DECLARATION+DEFAULT_DELIMITER+'\n').length());
     }
 
     private int sumUpTokens(final String[] inputTokens) {
