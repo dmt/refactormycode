@@ -1,9 +1,9 @@
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
+import ch.lambdaj.function.closure.Closure1;
+import ch.lambdaj.function.convert.Converter;
 
 import java.util.Arrays;
 
-import static ch.lambdaj.Lambda.sum;
+import static ch.lambdaj.Lambda.*;
 
 public class StringCalculator {
 
@@ -20,11 +20,9 @@ public class StringCalculator {
     }
 
     private Iterable<Integer> parseInts(final String[] inputTokens) {
-        return Iterables.transform(Arrays.asList(inputTokens), new Function<String, Integer>() {
-            public Integer apply(final String input) {
-                return Integer.parseInt(input);
-            }
-        });
+        Closure1<String> parseIntClosure = closure(String.class).of(Integer.class, "parseInt", var(String.class));
+        Converter parseIntConverter = parseIntClosure.cast(Converter.class);
+        return convert(Arrays.asList(inputTokens), parseIntConverter);
     }
 
     private String[] tokenizeInput(final String input) {
@@ -38,7 +36,7 @@ public class StringCalculator {
     }
 
     private String removeDelimiterDeclaration(final String input) {
-        return input.substring((DELIMITER_DECLARATION+DEFAULT_DELIMITER+'\n').length());
+        return input.substring((DELIMITER_DECLARATION + DEFAULT_DELIMITER + '\n').length());
     }
 
     private int sumUpTokens(final Iterable<Integer> numbers) {
