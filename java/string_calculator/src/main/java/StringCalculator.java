@@ -1,9 +1,9 @@
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.List;
+
+import static ch.lambdaj.Lambda.sum;
 
 public class StringCalculator {
 
@@ -16,7 +16,7 @@ public class StringCalculator {
         }
         String[] inputTokens = tokenizeInput(input);
         Iterable<Integer> numbers = parseInts(inputTokens);
-        return sumUpTokens(inputTokens);
+        return sumUpTokens(numbers);
     }
 
     private Iterable<Integer> parseInts(final String[] inputTokens) {
@@ -41,12 +41,8 @@ public class StringCalculator {
         return input.substring((DELIMITER_DECLARATION+DEFAULT_DELIMITER+'\n').length());
     }
 
-    private int sumUpTokens(final String[] inputTokens) {
-        int result = 0;
-        for (String nextNumber : inputTokens) {
-            result += Integer.parseInt(nextNumber);
-        }
-        return result;
+    private int sumUpTokens(final Iterable<Integer> numbers) {
+        return sum(numbers).intValue();
     }
 
     private String[] splitInputTokens(final String input, final char delimiter) {
