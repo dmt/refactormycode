@@ -14,9 +14,7 @@ public class StringCalculator {
         if (input.isEmpty()) {
             return 0;
         }
-        String[] inputTokens = tokenizeInput(input);
-        Iterable<Integer> numbers = parseInts(inputTokens);
-        return sum(numbers).intValue();
+        return sum(parseInts(tokenizeInput(input))).intValue();
     }
 
     private String[] tokenizeInput(final String input) {
