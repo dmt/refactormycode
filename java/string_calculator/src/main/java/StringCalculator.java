@@ -14,10 +14,10 @@ public class StringCalculator {
         if (input.isEmpty()) {
             return 0;
         }
-        return sum(parseInts(tokenizeInput(input))).intValue();
+        return sum(theConvertedIntegersFrom(theTokenized(input))).intValue();
     }
 
-    private String[] tokenizeInput(final String input) {
+    private String[] theTokenized(final String input) {
         char delimiter = DEFAULT_DELIMITER;
         String inputData = input;
         if (declaresSpecialDelimiter(input)) {
@@ -27,7 +27,7 @@ public class StringCalculator {
         return splitInputTokens(inputData, delimiter);
     }
 
-    private Iterable<Integer> parseInts(final String[] inputTokens) {
+    private Iterable<Integer> theConvertedIntegersFrom(final String[] inputTokens) {
         Closure1<String> parseIntClosure = closure(String.class).of(Integer.class, "parseInt", var(String.class));
         Converter parseIntConverter = parseIntClosure.cast(Converter.class);
         return convert(Arrays.asList(inputTokens), parseIntConverter);
