@@ -16,13 +16,7 @@ public class StringCalculator {
         }
         String[] inputTokens = tokenizeInput(input);
         Iterable<Integer> numbers = parseInts(inputTokens);
-        return sumUpTokens(numbers);
-    }
-
-    private Iterable<Integer> parseInts(final String[] inputTokens) {
-        Closure1<String> parseIntClosure = closure(String.class).of(Integer.class, "parseInt", var(String.class));
-        Converter parseIntConverter = parseIntClosure.cast(Converter.class);
-        return convert(Arrays.asList(inputTokens), parseIntConverter);
+        return sum(numbers).intValue();
     }
 
     private String[] tokenizeInput(final String input) {
@@ -35,12 +29,14 @@ public class StringCalculator {
         return splitInputTokens(inputData, delimiter);
     }
 
-    private String removeDelimiterDeclaration(final String input) {
-        return input.substring((DELIMITER_DECLARATION + DEFAULT_DELIMITER + '\n').length());
+    private Iterable<Integer> parseInts(final String[] inputTokens) {
+        Closure1<String> parseIntClosure = closure(String.class).of(Integer.class, "parseInt", var(String.class));
+        Converter parseIntConverter = parseIntClosure.cast(Converter.class);
+        return convert(Arrays.asList(inputTokens), parseIntConverter);
     }
 
-    private int sumUpTokens(final Iterable<Integer> numbers) {
-        return sum(numbers).intValue();
+    private String removeDelimiterDeclaration(final String input) {
+        return input.substring((DELIMITER_DECLARATION + DEFAULT_DELIMITER + '\n').length());
     }
 
     private String[] splitInputTokens(final String input, final char delimiter) {
