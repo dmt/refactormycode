@@ -1,3 +1,10 @@
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
 public class StringCalculator {
 
     static final String DELIMITER_DECLARATION = "//";
@@ -8,7 +15,16 @@ public class StringCalculator {
             return 0;
         }
         String[] inputTokens = tokenizeInput(input);
+        Iterable<Integer> numbers = parseInts(inputTokens);
         return sumUpTokens(inputTokens);
+    }
+
+    private Iterable<Integer> parseInts(final String[] inputTokens) {
+        return Iterables.transform(Arrays.asList(inputTokens), new Function<String, Integer>() {
+            public Integer apply(final String input) {
+                return Integer.parseInt(input);
+            }
+        });
     }
 
     private String[] tokenizeInput(final String input) {
